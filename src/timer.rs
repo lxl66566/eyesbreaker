@@ -20,7 +20,10 @@ impl Default for Timer {
     }
 }
 
-pub const DEFAULT_COUNTDOWN_SECOND: f64 = 10.0;
+#[cfg(debug_assertions)]
+pub const DEFAULT_COUNTDOWN_SECOND: f64 = 5.0;
+#[cfg(not(debug_assertions))]
+pub const DEFAULT_COUNTDOWN_SECOND: f64 = 1800.0;
 
 pub struct CountDown {
     timer: Timer,
