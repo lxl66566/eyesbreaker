@@ -43,12 +43,12 @@ fn main() {
 
     event_loop
         .run(move |event, event_loop| {
-            // We add delay of 160 ms (6fps) to event_loop to reduce cpu load.
+            // We add delay of 1000 ms (1fps) to event_loop to reduce cpu load.
             // This can be removed to allow ControlFlow::Poll to poll on each cpu cycle
             // Alternatively, you can set ControlFlow::Wait or use
             // TrayIconEvent::set_event_handler, see https://github.com/tauri-apps/tray-icon/issues/83#issuecomment-1697773065
             event_loop.set_control_flow(ControlFlow::WaitUntil(
-                std::time::Instant::now() + std::time::Duration::from_millis(160),
+                std::time::Instant::now() + std::time::Duration::from_millis(1000),
             ));
 
             #[cfg(not(target_os = "linux"))]
@@ -58,7 +58,6 @@ fn main() {
                 tray_icon = Some(
                     TrayIconBuilder::new()
                         .with_menu(Box::new(Menu::new()))
-                        .with_tooltip("Eyesbreaker - have a rest!")
                         .with_icon(icon1.clone())
                         .with_title("Eyesbreaker")
                         .build()
@@ -76,9 +75,14 @@ fn main() {
                 }
             }
 
-            // 如果到时间了，切换图标。
-            if count_down.done_once() {
-                if let Some(tray_icon) = tray_icon.as_mut() {
+            if let Some(tray_icon) = tray_icon.as_mut() {
+                let _ = tray_icon.set_tooltip(Some(format!(
+                    "Eyesbreaker - next break in {}s",
+                    count_down.time_left().ceil()
+                )));
+
+                // 如果到时间了，切换图标。
+                if count_down.done_once() {
                     tray_icon
                         .set_icon(Some(icon2.clone()))
                         .expect("set icon failed");

@@ -59,6 +59,9 @@ impl CountDown {
             false
         }
     }
+    pub fn time_left(&self) -> f64 {
+        (self.time - self.elapsed()).max(0.0)
+    }
 }
 
 impl Default for CountDown {
@@ -68,5 +71,20 @@ impl Default for CountDown {
             time: DEFAULT_COUNTDOWN_SECOND,
             onced: false,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_done_once() {
+        let mut count_down = CountDown::new(0.1);
+        assert!(!count_down.done_once());
+        std::thread::sleep(std::time::Duration::from_secs_f64(0.2));
+        assert!(count_down.done_once());
+        assert!(!count_down.done_once());
+        assert!(!count_down.done_once());
     }
 }

@@ -7,7 +7,7 @@ license     = "MIT"
 name        = "eyesbreaker"
 readme      = "README.md"
 repository  = "https://github.com/lxl66566/eyesbreaker"
-version     = "0.1.0"
+version     = "0.1.1"
 
 
 [dependencies]
@@ -19,7 +19,7 @@ tray-icon         = "0.19.1"
 winit             = "0.30.5"
 
 [target."cfg(unix)".dependencies]
-gtk = "*"
+gtk = "0.18.1"
 
 [profile.release]
 lto       = true
