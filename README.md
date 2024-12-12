@@ -10,17 +10,25 @@ Only tested on windows. If you are using Linux, please try [safeeyes](https://gi
 
 ## Usage
 
-Moving the mouse over the tray icon will reset the timer when it's green. Right click the tray icon will exit the program. Hover the mouse over the icon to view the remaining time.
+Moving the mouse over the tray icon will reset the timer when it's green. At any time, left click the tray icon will reset the timer, right click will exit the program. Hover the mouse over the icon to view the remaining time.
 
-计时结束后将鼠标移动到托盘上，以重置计时器；右击图标以退出程序；将鼠标悬停在图标上以查看剩余时间。
+计时结束后将鼠标移动到托盘上，以重置计时器；在任意时刻左击重置计时器，右击图标以退出程序；将鼠标悬停在图标上以查看剩余时间。
 
 ## Installation
 
+- use [cargo-binstall](https://github.com/cargo-bins/cargo-binstall):
+  ```sh
+  cargo binstall eyesbreaker
+  ```
 - use [bpm](https://github.com/lxl66566/bpm):
   ```sh
   bpm i https://github.com/lxl66566/eyesbreaker
   ```
-- manual: download from [release](https://github.com/lxl66566/eyesbreaker/releases).
+- manual: download binary from [release](https://github.com/lxl66566/eyesbreaker/releases)
+- compile from source:
+  ```sh
+  cargo install eyesbreaker
+  ```
 
 ## Usage
 
@@ -37,4 +45,4 @@ Options:
 
 If you need start this program automatically on boot, please use [user-startup-py](https://github.com/lxl66566/user-startup-py).
 
-如果你需要开机自启，可以看看 [user-startup-py](https://github.com/lxl66566/user-startup-py)。
+如果你需要开机自启，可以看看 [user-startup-rs](https://github.com/lxl66566/user-startup-rs)。

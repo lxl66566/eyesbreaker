@@ -1,3 +1,6 @@
+#![warn(clippy::cargo)]
+#![allow(clippy::multiple_crate_versions)]
+
 pub mod cli;
 pub mod timer;
 
@@ -91,6 +94,12 @@ fn main() {
 
             if let Ok(event) = tray_channel.try_recv() {
                 match event {
+                    TrayIconEvent::Click {
+                        button: MouseButton::Left,
+                        ..
+                    } => {
+                        count_down.reset();
+                    }
                     TrayIconEvent::Click {
                         button: MouseButton::Right,
                         ..

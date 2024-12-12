@@ -1,4 +1,5 @@
 [package]
+categories  = ["gui"]
 description = "Relax your eyes and take a break"
 edition     = "2021"
 homepage    = "https://github.com/lxl66566/eyesbreaker"
@@ -7,11 +8,11 @@ license     = "MIT"
 name        = "eyesbreaker"
 readme      = "README.md"
 repository  = "https://github.com/lxl66566/eyesbreaker"
-version     = "0.1.1"
+version     = "0.1.2"
 
 
 [dependencies]
-clap              = { version = "4.5.21", features = ["derive"] }
+clap              = { version = "4.5.23", features = ["derive"] }
 image             = "0.25.5"
 log               = "0.4.22"
 pretty_env_logger = "0.5.0"
@@ -19,7 +20,7 @@ tray-icon         = "0.19.2"
 winit             = "0.30.5"
 
 [target."cfg(unix)".dependencies]
-gtk = "0.18.1"
+gtk = "0.18.2"
 
 [profile.release]
 lto       = true
